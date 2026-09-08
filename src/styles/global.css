@@ -41,6 +41,8 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
+  overflow-wrap: break-word;
+  word-break: break-word;
   -webkit-font-smoothing: antialiased;
 }
 h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; margin: 0 0 0.5em; }
