@@ -9,7 +9,10 @@ const links = [
 ---
 <header class="nav">
   <div class="container nav-inner">
-    <a href="/" class="brand">{site.name}</a>
+    <a href="/" class="brand">
+      <img src="/favicon-192x192.png" alt="" class="brand-icon" width="192" height="192" />
+      <span class="brand-text">{site.name}</span>
+    </a>
     <nav>
       <ul>
         {links.map((link) => (
@@ -45,9 +48,21 @@ const links = [
     color: #f3ead9;
     flex: 0 1 auto;
     min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand-icon {
+    flex: 0 0 auto;
+    width: 2.3rem;
+    height: 2.3rem;
+    object-fit: contain;
+  }
+  .brand-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
   }
   nav {
     flex: 1 1 auto;
@@ -89,6 +104,10 @@ const links = [
     .brand {
       font-size: 0.92rem;
       max-width: 42vw;
+    }
+    .brand-icon {
+      width: 1.3rem;
+      height: 1.3rem;
     }
     nav ul {
       gap: 1.1rem;
