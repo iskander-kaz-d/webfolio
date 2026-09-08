@@ -33,6 +33,7 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -42,22 +43,58 @@ const links = [
     text-decoration: none;
     font-size: 1.05rem;
     color: #f3ead9;
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
   }
   nav ul {
     display: flex;
+    flex-wrap: nowrap;
     gap: 1.75rem;
     list-style: none;
     margin: 0;
     padding: 0;
+    width: max-content;
+    margin-left: auto;
   }
   nav a {
     text-decoration: none;
     color: rgba(243, 234, 217, 0.6);
     font-weight: 500;
+    white-space: nowrap;
     transition: color 200ms ease;
   }
   nav a:hover,
   nav a:focus-visible {
     color: #f3ead9;
+  }
+
+  @media (max-width: 560px) {
+    .nav-inner {
+      padding-top: 0.85rem;
+      padding-bottom: 0.85rem;
+    }
+    .brand {
+      font-size: 0.92rem;
+      max-width: 42vw;
+    }
+    nav ul {
+      gap: 1.1rem;
+    }
+    nav a {
+      font-size: 0.92rem;
+    }
   }
 </style>
