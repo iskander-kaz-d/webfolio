@@ -8,12 +8,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  socialTitle?: string;
 }
 
 const {
   title,
   description = `Engineering Portfolio | Iskander Kaz Dyussenov`,
   image = '/og-image.png',
+  socialTitle = `Engineering Portfolio | Iskander Kaz Dyussenov`,
 } = Astro.props;
 
 const pageTitle = `${title} · ${site.name}`;
@@ -39,7 +41,7 @@ const absoluteImage = new URL(image, Astro.site);
     <!-- Open Graph / social link previews -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={pageTitle} />
+    <meta property="og:title" content={socialTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={absoluteImage} />
@@ -48,7 +50,7 @@ const absoluteImage = new URL(image, Astro.site);
 
     <!-- Twitter/X card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:title" content={socialTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={absoluteImage} />
   </head>
