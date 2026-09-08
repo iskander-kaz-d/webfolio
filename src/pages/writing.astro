@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { content } from '../data/content';
+import { writingEntries } from '../data/writing';
+---
+<Layout title="Writing" description="Writing and notes.">
+  <section class="container page-header">
+    <h1>{content.writing.heading}</h1>
+  </section>
+
+  <section class="container grid">
+    {writingEntries.map((entry) => (
+      <article class="card">
+        <h3>{entry.title}</h3>
+        <p>{entry.description}</p>
+        <a class="read" href={entry.url} target="_blank" rel="noopener noreferrer">{content.writing.readLabel} &rarr;</a>
+      </article>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 6rem;
+  }
+  .card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  .card p {
+    color: var(--text-muted);
+    margin: 0 0 1.25rem;
+    flex-grow: 1;
+  }
+  a.read {
+    color: var(--accent-soft);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  a.read:hover,
+  a.read:focus-visible {
+    color: var(--accent);
+  }
+</style>

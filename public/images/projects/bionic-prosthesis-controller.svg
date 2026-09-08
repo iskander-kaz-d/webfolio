@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111114"/>
+      <stop offset="100%" stop-color="#1c2333"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g2)"/>
+  <g stroke="#3b82f6" stroke-width="2" opacity="0.6">
+    <line x1="320" y1="120" x2="360" y2="200"/>
+    <line x1="360" y1="200" x2="340" y2="280"/>
+    <line x1="340" y1="280" x2="380" y2="350"/>
+    <line x1="360" y1="200" x2="440" y2="220"/>
+    <line x1="440" y1="220" x2="500" y2="180"/>
+  </g>
+  <g fill="#2563eb">
+    <circle cx="320" cy="120" r="7"/>
+    <circle cx="360" cy="200" r="8"/>
+    <circle cx="340" cy="280" r="7"/>
+    <circle cx="380" cy="350" r="7"/>
+    <circle cx="440" cy="220" r="6"/>
+    <circle cx="500" cy="180" r="6"/>
+  </g>
+  <text x="32" y="410" font-family="Archivo, sans-serif" font-size="18" fill="#a1a1aa">Bionic Prosthesis Controller — add project image</text>
+</svg>

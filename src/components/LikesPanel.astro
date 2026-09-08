@@ -1,0 +1,103 @@
+---
+import { panels } from '../data/panels';
+import { content } from '../data/content';
+---
+<section class="likes">
+  <h2 class="likes-heading">{content.home.likesHeading}</h2>
+  <div class="likes-row">
+    {panels.map((panel) => (
+      <a class="likes-item" href={panel.href} aria-label={panel.label}>
+        <img src={panel.image} alt="" loading="lazy" />
+        <span class="likes-overlay"></span>
+        <span class="likes-label">{panel.label}</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .likes {
+    width: 100%;
+  }
+  .likes-heading {
+    text-align: center;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: #000000;
+    margin: 0 0 2rem;
+    padding: 0 1.5rem;
+  }
+  .likes-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+  .likes-item {
+    position: relative;
+    display: block;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    text-decoration: none;
+    background: #000;
+  }
+  .likes-item + .likes-item {
+    border-left: 1px solid var(--border);
+  }
+  .likes-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .likes-item {
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+  }
+  .likes-item:hover {
+    transform: scale(1.1);
+    z-index: 3;
+  }
+  .likes-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 300ms ease;
+  }
+  .likes-item:hover .likes-overlay {
+    background: rgba(50, 50, 50, 0.25);
+  }
+  .likes-label {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2rem, 5vw, 2rem);
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+  @media (max-width: 720px) {
+    .likes-row {
+      grid-template-columns: 1fr;
+    }
+    .likes-item {
+      aspect-ratio: 16 / 9;
+    }
+    .likes-item + .likes-item {
+      border-left: none;
+      border-top: 1px solid var(--border);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .likes-item {
+      transition: none;
+    }
+  }
+</style>

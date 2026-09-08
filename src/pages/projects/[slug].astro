@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+<Layout title={project.title} description={project.summary}>
+  <article class="container detail">
+    <a class="back" href="/projects">&larr; All projects</a>
+
+    <h1>{project.title}</h1>
+    <p class="summary">{project.summary}</p>
+
+    <ul class="tags">
+      {project.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+
+    <div class="sections">
+      {project.sections.map((section, i) => (
+        <div class="section">
+          <div class="section-image">
+            <img src={section.image} alt={section.caption} loading="lazy" />
+            {project.status === 'upcoming' && i === 0 && <span class="badge">Coming soon</span>}
+          </div>
+          <p class="caption">{section.caption}</p>
+          <p class="text">{section.text}</p>
+        </div>
+      ))}
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .detail {
+    padding: 3rem 1.5rem 6rem;
+    max-width: 720px;
+  }
+  a.back {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transition: color 200ms ease;
+  }
+  a.back:hover,
+  a.back:focus-visible {
+    color: var(--accent-soft);
+  }
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 0.75rem;
+  }
+  .summary {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin: 0 0 1.25rem;
+    max-width: 65ch;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 3rem;
+    padding: 0;
+  }
+  .tags li {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--tag-color);
+    background: var(--tag-bg);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+  .sections {
+    display: grid;
+    gap: 3.5rem;
+  }
+  .section-image {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  .section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .badge {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+  .caption {
+    margin: 0.75rem 0 0;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    opacity: 0.75;
+    letter-spacing: 0.01em;
+  }
+  .text {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    color: var(--text);
+  }
+</style>

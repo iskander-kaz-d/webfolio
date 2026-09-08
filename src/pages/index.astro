@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LikesPanel from '../components/LikesPanel.astro';
+import { site } from '../data/site';
+import { content } from '../data/content';
+---
+<Layout title="Home">
+  <section class="hero container">
+    <div class="hero-text">
+      <p class="terminal-line">
+        <span class="prompt">{content.home.terminalPrompt}</span>
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+        <span class="sep">&middot;</span>
+        <a href={site.github} target="_blank" rel="noopener noreferrer">github</a>
+        <span class="sep">&middot;</span>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer">linkedin</a>
+      </p>
+      <p class="eyebrow">{site.location}</p>
+      <h1>{site.name}</h1>
+      <p class="tagline">{site.tagline}</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/projects">{content.home.ctaProjects}</a>
+        <a class="btn btn-outline" href={site.resumeUrl} target="_blank" rel="noopener noreferrer">{content.home.ctaResume}</a>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <img src={site.headshotUrl} alt={site.name} />
+    </div>
+  </section>
+
+  <LikesPanel />
+</Layout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding: 5rem 1.5rem 4rem;
+  }
+  .terminal-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Courier New', monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    margin: 0 0 1.25rem;
+  }
+  .terminal-line .prompt {
+    color: var(--accent-soft);
+    font-weight: 700;
+  }
+  .terminal-line a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease, color 200ms ease;
+  }
+  .terminal-line a:hover,
+  .terminal-line a:focus-visible {
+    color: var(--accent-soft);
+    border-color: var(--accent-soft);
+  }
+  .terminal-line .sep {
+    color: var(--border);
+  }
+  .eyebrow {
+    color: var(--accent-soft);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin: 0 0 0.75rem;
+  }
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+  }
+  .tagline {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    max-width: 40ch;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .hero-avatar {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    max-width: 280px;
+    margin-left: auto;
+  }
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+    .hero-avatar {
+      max-width: 180px;
+      margin: 0 auto;
+    }
+  }
+</style>

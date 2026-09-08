@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+import { content } from '../data/content';
+---
+<Layout title="Talk" description="Get in touch.">
+  <section class="hero container">
+    <div class="text">
+      <h1>{content.talk.heading}</h1>
+      <p>{content.talk.intro}</p>
+      <a class="btn btn-primary" href={site.instagram} target="_blank" rel="noopener noreferrer">
+        {content.talk.cta}
+      </a>
+    </div>
+    <div class="image">
+      <img src={site.talkImageUrl} alt="" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: 5rem 1.5rem 6rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 1rem;
+  }
+  .text p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 48ch;
+    margin: 0 0 2rem;
+  }
+  .image {
+    aspect-ratio: 4 / 5;
+    max-width: 500px;
+    margin-top: 2.5rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

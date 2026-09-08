@@ -1,0 +1,85 @@
+---
+import type { Project } from '../data/projects';
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+<a class="card" href={`/projects/${project.slug}`}>
+  <div class="card-image">
+    <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+    {project.status === 'upcoming' && <span class="badge">Coming soon</span>}
+  </div>
+  <div class="card-body">
+    <h3>{project.title}</h3>
+    <p class="summary">{project.summary}</p>
+    <ul class="tags">
+      {project.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  </div>
+</a>
+
+<style>
+  a.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 200ms ease;
+  }
+  a.card:hover {
+    border-color: var(--accent);
+  }
+  .card-image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+  .card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .card-body h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .summary {
+    color: var(--text-muted);
+    margin: 0 0 0.9rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .tags li {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--tag-color);
+    background: var(--tag-bg);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+</style>
