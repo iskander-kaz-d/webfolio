@@ -39,6 +39,15 @@ import { content } from '../data/content';
     gap: 3rem;
     padding: 5rem 1.5rem 4rem;
   }
+  /* Keep the hero (plus the "Kaz likes to..." heading right after it) filling
+     roughly one screen, so the like-panel images require a short scroll to
+     reach. 160px is an estimate for the nav bar + heading block height —
+     nudge it if the fold lands noticeably off on your screen. */
+  @media (min-width: 721px) {
+    .hero {
+      min-height: calc(100dvh - 160px);
+    }
+  }
   .terminal-line {
     display: inline-flex;
     flex-wrap: wrap;

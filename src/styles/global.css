@@ -20,15 +20,15 @@
 /* Alternate theme: beige/orange/teal. Toggle by setting `theme` in
    src/data/site.ts back to "dark" (or removing the attribute) to revert. */
 :root[data-theme="light"] {
-  --bg: #f3ead9;
-  --bg-elevated: #fbf6ec;
+  --bg: #fdf8ec;
+  --bg-elevated: #ffffff;
   --border: #e3d5b8;
-  --accent: #c1591f;
-  --accent-soft: #8c3d14;
+  --accent: #d66853;
+  --accent-soft: #a75141;
   --accent-2: #146962;
-  --tag-bg: rgba(20, 105, 98, 0.14);
-  --tag-color: #146962;
-  --text: #3e3322;
+  --tag-bg: var(--bg);
+  --tag-color: #288f6e;
+  --text: #3b2f2f;
   --text-muted: #6b5f4e;
 }
 

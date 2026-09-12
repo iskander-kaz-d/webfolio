@@ -29,10 +29,11 @@ const { project } = Astro.props;
     overflow: hidden;
     text-decoration: none;
     color: inherit;
-    transition: border-color 200ms ease;
+    transition: border-color 200ms ease, border-width 200ms ease;
   }
   a.card:hover {
-    border-color: var(--accent);
+    border-color: #50d196;
+    border-width: 2px;
   }
   .card-image {
     position: relative;
@@ -79,6 +80,7 @@ const { project } = Astro.props;
     font-weight: 600;
     color: var(--tag-color);
     background: var(--tag-bg);
+    border: 1px solid var(--tag-color);
     padding: 0.25rem 0.6rem;
     border-radius: 999px;
   }

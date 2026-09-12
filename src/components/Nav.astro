@@ -10,7 +10,7 @@ const links = [
 <header class="nav">
   <div class="container nav-inner">
     <a href="/" class="brand">
-      <img src="/favicon-192x192.png" alt="" class="brand-icon" width="192" height="192" />
+      <img src="/nav-hedgehog.png" alt="" class="brand-icon" width="512" height="512" />
       <span class="brand-text">{site.name}</span>
     </a>
     <div class="nav-menu">
@@ -54,8 +54,15 @@ const links = [
     closeTimer = setTimeout(() => setOpen(false), 250);
   }
 
-  navMenu?.addEventListener('mouseenter', () => setOpen(true));
-  navMenu?.addEventListener('mouseleave', scheduleClose);
+  // Only bind hover open/close on devices that actually support hover
+  // (a real mouse). Touchscreens synthesize a mouseenter right before the
+  // click event, which would otherwise open the menu and then have the
+  // click handler immediately toggle it shut again.
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (supportsHover) {
+    navMenu?.addEventListener('mouseenter', () => setOpen(true));
+    navMenu?.addEventListener('mouseleave', scheduleClose);
+  }
 
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
@@ -76,9 +83,9 @@ const links = [
     position: sticky;
     top: 0;
     z-index: 50;
-    background: #c1591f;
+    background: var(--accent);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 0px solid rgba(0, 0, 0, 0.25);
   }
   .nav-inner {
     display: flex;
@@ -189,7 +196,7 @@ const links = [
       justify-items: stretch;
       transition: grid-template-rows 280ms ease;
       overflow: hidden;
-      background: #c1591f;
+      background: var(--accent);
       border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     }
     .primary-nav.open {
