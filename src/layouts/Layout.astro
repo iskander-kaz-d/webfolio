@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -37,6 +38,7 @@ const absoluteImage = new URL(image, Astro.site);
     <link rel="icon" href="/favicon-512x512.png" type="image/png" sizes="512x512" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
+    <ClientRouter />
 
     <!-- Open Graph / social link previews -->
     <meta property="og:type" content="website" />
@@ -55,10 +57,10 @@ const absoluteImage = new URL(image, Astro.site);
     <meta name="twitter:image" content={absoluteImage} />
   </head>
   <body>
-    <Nav />
-    <main>
+    <Nav transition:persist />
+    <main transition:animate="fade">
       <slot />
     </main>
-    <Footer />
+    <Footer transition:persist />
   </body>
 </html>
