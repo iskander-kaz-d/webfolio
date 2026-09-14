@@ -57,10 +57,10 @@ const absoluteImage = new URL(image, Astro.site);
     <meta name="twitter:image" content={absoluteImage} />
   </head>
   <body>
-    <Nav transition:persist />
+    <Nav />
     <main transition:animate="fade">
       <slot />
     </main>
-    <Footer transition:persist />
+    <Footer />
   </body>
 </html>
